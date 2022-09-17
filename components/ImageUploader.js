@@ -1,12 +1,22 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { auth, storage, STATE_CHANGED } from '@lib/firebase';
 import Loader from './Loader';
 
 // Uploads images to Firebase Storage
-export default function ImageUploader() {
+export default function ImageUploader({ postRef }) {
   const [uploading, setUploading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [downloadURL, setDownloadURL] = useState(null);
+
+    // When an image has been uploaded, store the URL
+  // against the post document in Firestore
+  useEffect(() => {
+    if (downloadURL) {
+      postRef.collection('images').add({ src: downloadURL });
+      // Reset the upload state
+      setDownloadURL(null);
+    }
+  }, [downloadURL]);
 
   // Creates a Firebase Upload Task
   const uploadFile = async (e) => {
@@ -37,20 +47,18 @@ export default function ImageUploader() {
   };
 
   return (
-    <div className="box">
+    <button>
       <Loader show={uploading} />
       {uploading && <h3>{progress}%</h3>}
 
       {!uploading && (
         <>
-          <label className="btn">
+          <label>
             📸 Upload Img
             <input type="file" onChange={uploadFile} accept="image/x-png,image/gif,image/jpeg" />
           </label>
         </>
       )}
-
-      {downloadURL && <code className="upload-snippet">{`![alt](${downloadURL})`}</code>}
-    </div>
+    </button>
   );
 }

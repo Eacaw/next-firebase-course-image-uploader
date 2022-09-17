@@ -2,6 +2,7 @@ import styles from '@styles/Admin.module.css';
 import AuthCheck from '@components/AuthCheck';
 import { firestore, auth, serverTimestamp } from '@lib/firebase';
 import ImageUploader from '@components/ImageUploader';
+import UploadedImageSelector from '@components/UploadedImageSelector';
 
 import { useState } from 'react';
 import { useRouter } from 'next/router';
@@ -46,6 +47,8 @@ function PostManager() {
             <Link href={`/${post.username}/${post.slug}`}>
               <button className="btn-blue">Live view</button>
             </Link>
+            <ImageUploader postRef={postRef} />
+            <UploadedImageSelector postRef={postRef} />
             <DeletePostButton postRef={postRef} />
           </aside>
         </>
@@ -80,7 +83,6 @@ function PostForm({ defaultValues, postRef, preview }) {
       )}
 
       <div className={preview ? styles.hidden : styles.controls}>
-        <ImageUploader />
 
         <textarea
           name="content"
