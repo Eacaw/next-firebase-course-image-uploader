@@ -1,5 +1,8 @@
 ## Next.js + Firebase Fireship.io Pro course - Image Uploader addon
 ---
+
+<img width="747" alt="NextFire Image Uploader" src="https://user-images.githubusercontent.com/24251551/190866871-c52a535c-4032-44d1-aac2-6e33187978cf.png">
+
 ### Disclaimer
 > This was written trying to keep changes to the original repo to a minimum, and as such, this is written using Firebase V8, I have tried however to provide V9 examples in this readme where appropriate.
 
