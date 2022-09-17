@@ -47,7 +47,7 @@ export default function ImageUploader({ postRef }) {
   };
 
   return (
-    <button>
+    <div className='btn'>
       <Loader show={uploading} />
       {uploading && <h3>{progress}%</h3>}
 
@@ -55,10 +55,10 @@ export default function ImageUploader({ postRef }) {
         <>
           <label>
             📸 Upload Img
-            <input type="file" onChange={uploadFile} accept="image/x-png,image/gif,image/jpeg" />
+            <input type='file' onChange={uploadFile} accept='image/x-png,image/gif,image/jpeg' />
           </label>
         </>
       )}
-    </button>
+    </div>
   );
 }
