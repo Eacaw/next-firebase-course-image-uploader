@@ -1,7 +1,7 @@
 ## Next.js + Firebase Fireship.io Pro course - Image Uploader addon
 ---
 ### Disclaimer
-> This was written with trying to keep changes to the original repo to a minimum, and as such, this is written using Firebase V8, I have tried however to provide V9 examples in this readme where appropriate.
+> This was written trying to keep changes to the original repo to a minimum, and as such, this is written using Firebase V8, I have tried however to provide V9 examples in this readme where appropriate.
 
 ## About
 
@@ -28,7 +28,7 @@ users
 
  ## Changes made
 
->`admin/[slug].js`
+## `admin/[slug].js`
 
 Move `ImageUploader` from line 83 -> 50, placing it into the `<aside>` beneath the 'live view' button but above the delete button, pass in `postRef` prop. Also add the `UploadedImageSelector` component immediately below.
 
@@ -38,11 +38,11 @@ Move `ImageUploader` from line 83 -> 50, placing it into the `<aside>` beneath t
  ```
 
 
- >`ImageUploader.js`
+ ## `ImageUploader.js`
 
  Use postRef prop to add a new document to the collection
 
-### Firebase V8
+> Firebase V8
  ``` javascript
    useEffect(() => {
     if (downloadURL) {
@@ -52,7 +52,7 @@ Move `ImageUploader` from line 83 -> 50, placing it into the `<aside>` beneath t
     }
   }, [downloadURL]);
   ```
-### Firebase V9
+> Firebase V9
 ``` javascript
   useEffect(() => {
     if (downloadURL) {
@@ -63,11 +63,11 @@ Move `ImageUploader` from line 83 -> 50, placing it into the `<aside>` beneath t
     }
   }, [downloadURL]);
 ```
->`UploadedImageSelector.js`
+## `UploadedImageSelector.js`
 
 This file is all new, but if you are using firebase V9, here are the changes that need to be made:
 
-### Firebase V8
+> Firebase V8
 ``` javascript
   const imagesCollection = postRef.collection('images');
 ```
@@ -82,7 +82,7 @@ useEffect(() => {
     }
 }, [coverImageSrc]);
   ```
-### Firebase V9
+> Firebase V9
 ``` javascript
 import { collection, updateDoc } from "firebase/firestore";
 ```
